@@ -89,7 +89,7 @@ java ECommerce
 
 **Gustavo Martins Cirino**  
 Estudante de Desenvolvimento de Sistemas • Java & Banco de Dados  
-[GitHub Profile](https://github.com/seu-usuario) ← *(atualize com seu link)*
+[GitHub Profile] https://github.com/Gustavo-Martins-Cirino 
 
 ---
 
