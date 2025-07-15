@@ -1,6 +1,6 @@
 # Projetos e Treinos em Java 🧠☕️
 
-Este repositório reúne meus projetos e exercícios desenvolvidos durante minha jornada de aprendizado em Java. Programo há cerca de 1 ano e meio e atualmente estudo no CEUb.
+Este repositório reúne meus projetos e exercícios desenvolvidos durante minha jornada de aprendizado em Java. Programo há cerca de 2 anos e atualmente estudo no CEUb.
 
 ## Sobre
 
