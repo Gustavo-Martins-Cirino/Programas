@@ -28,17 +28,18 @@ Para executar os projetos contidos neste repositório, siga os passos abaixo:
 
 1.  **Clone o Repositório**:
     ```bash
-    git clone [https://github.com/Gustavo-Martins-Cirino/Programas.git](https://github.com/Gustavo-Martins-Cirino/Programas.git)
+    git clone https://github.com/Gustavo-Martins-Cirino/Programas.git
     ```
 2.  **Navegue até a Pasta do Projeto**:
     Após clonar, entre no diretório do repositório:
     ```bash
     cd Programas
     ```
-    Dentro desta pasta, você encontrará subpastas para cada projeto. Navegue até o projeto específico que deseja executar. Por exemplo:
+    Dentro desta pasta, você encontrará subpastas para cada projeto (ex: `Biblioteca`, `ECommerce`, `Treinos`). Navegue até o projeto específico que deseja executar. Por exemplo:
     ```bash
     cd NomeDoProjeto
     ```
+   *Observação*: Alguns programas podem ser arquivos Java individuais na raiz do repositório (ex: `CadastroDeAlunos.java`). Nestes casos, o IntelliJ IDEA pode abrir e executar o arquivo diretamente.
 3.  **Configuração do Banco de Dados (se aplicável)**:
     Se o projeto utilizar **MySQL** e **JDBC**, você precisará:
     * Ter uma instância do MySQL rodando.
@@ -57,6 +58,10 @@ Para executar os projetos contidos neste repositório, siga os passos abaixo:
 
 Sinta-se à vontade para explorar os projetos, sugerir melhorias ou relatar problemas. Se tiver alguma dúvida, pode abrir uma "Issue" no repositório.
 
+---
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Para mais detalhes, veja o arquivo [LICENSE](LICENSE).
 
 
 
