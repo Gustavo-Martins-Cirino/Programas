@@ -58,10 +58,7 @@ Para executar os projetos contidos neste repositório, siga os passos abaixo:
 
 Sinta-se à vontade para explorar os projetos, sugerir melhorias ou relatar problemas. Se tiver alguma dúvida, pode abrir uma "Issue" no repositório.
 
----
-## 📄 Licença
 
-Este projeto está sob a licença MIT. Para mais detalhes, veja o arquivo [LICENSE](LICENSE).
 
 
 
