@@ -35,9 +35,9 @@ Para executar os projetos contidos neste repositório, siga os passos abaixo:
     ```bash
     cd Programas
     ```
-    Dentro desta pasta, você encontrará subpastas para cada projeto (ex: `ProjetoX`, `ExercicioY`). Navegue até o projeto específico que deseja executar. Por exemplo:
+    Dentro desta pasta, você encontrará subpastas para cada projeto. Navegue até o projeto específico que deseja executar. Por exemplo:
     ```bash
-    cd NomeDoSeuProjetoAqui
+    cd NomeDoProjeto
     ```
 3.  **Configuração do Banco de Dados (se aplicável)**:
     Se o projeto utilizar **MySQL** e **JDBC**, você precisará:
