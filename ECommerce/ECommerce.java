@@ -78,7 +78,7 @@ public class ECommerce {
         }
     }
 
-    // Classe CarrinhoItem com PK e FK
+    // Classe CarrinhoItem
     static class CarrinhoItem {
         Long idCliente;
         Long idProduto;
@@ -604,7 +604,7 @@ public class ECommerce {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Random random = new Random(); //
+        Random random = new Random();
 
         while (true) {
             System.out.println("\n--- Menu Principal ---");
