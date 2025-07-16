@@ -10,20 +10,16 @@ import java.time.format.DateTimeFormatter;
 
 public class Biblioteca {
 
-    // Método para gerar ID aleatório único para Livro (agora retorna int)
     public static int gerarIdLivroAleatorioUnico() {
         int generatedId;
         Random random = new Random();
         do {
-            // Gera um ID de 5 dígitos (exemplo, você pode ajustar o limite)
-            generatedId = 10000 + random.nextInt(90000); // Garante 5 dígitos
-            // Verifica se o ID já existe no banco de dados
-            // Usamos consultarLivroPorId para isso
-        } while (consultarLivroPorId(generatedId) != null); // Continua gerando até ser único
+            generatedId = 10000 + random.nextInt(90000);
+        } while (consultarLivroPorId(generatedId) != null);
         return generatedId;
     }
 
-    // Método original (parece ser para Matrícula de Aluno, que é Long)
+
     public static Long gerarIdAleatorioComLimite(int numDigitos) {
         if (numDigitos <= 0 || numDigitos > 19) {
             throw new IllegalArgumentException("Número de dígitos inválido. Deve ter no máximo 19 caracteres! ");
@@ -35,13 +31,13 @@ public class Biblioteca {
         long max = (long) Math.pow(10, numDigitos) - 1;
         if (numDigitos == 19) {
             max = Long.MAX_VALUE;
-            min = 1_000_000_000_000_000_000L; // Menor número de 19 dígitos
+            min = 1_000_000_000_000_000_000L;
         }
         Random random = new Random();
         long generatedId;
         do {
             generatedId = min + (Math.abs(random.nextLong()) % (max - min + 1));
-        } while (generatedId < min); // Garante que não seja menor que 'min' devido ao Math.abs()
+        } while (generatedId < min);
 
         return generatedId;
     }
@@ -52,20 +48,19 @@ public class Biblioteca {
         String IBSN;
         int ano;
         int quantidadeDisponivel;
-        int Id; // Atributo Id
+        int Id;
 
-        // NOVO CONSTRUCTOR: Para criar um livro antes de inserir no DB (Id será gerado ou fornecido)
+
         public Livro(String IBSN, String titulo, String autor, int ano, int quantidadeDisponivel) {
             this.IBSN = IBSN;
             this.titulo = titulo;
             this.autor = autor;
             this.ano = ano;
             this.quantidadeDisponivel = quantidadeDisponivel;
-            this.Id = 0; // Valor padrão, será atualizado após a geração ou consulta
+            this.Id = 0;
         }
 
-        // CONSTRUCTOR EXISTENTE: Para criar um livro quando você já tem o ID (lendo do DB)
-        // Ordem dos parâmetros ajustada para consistência
+
         protected Livro(int Id, String IBSN, String titulo, String autor, int ano, int quantidadeDisponivel) {
             this.Id = Id;
             this.IBSN = IBSN;
@@ -76,7 +71,7 @@ public class Biblioteca {
         }
 
 
-        // SETTERS AND GETTERS (renomeado Id() para getId() )
+
         public String getTitulo() { return titulo; }
         public void setTitulo(String titulo) { this.titulo = titulo; }
 
@@ -92,7 +87,7 @@ public class Biblioteca {
         public int getQuantidadeDisponivel() { return quantidadeDisponivel; }
         public void setQuantidadeDisponivel(int quantidadeDisponivel) { this.quantidadeDisponivel = quantidadeDisponivel; }
 
-        public int getId(){ // Renomeado de Id() para getId()
+        public int getId(){
             return Id;
         }
         public void setId(int Id){
@@ -110,7 +105,7 @@ public class Biblioteca {
         }
     }
 
-    // DEFINIÇÃO DA CLASSE Aluno (Sem alterações, apenas incluído para contexto)
+
     static class Aluno {
         String nome;
         Long matricula;
@@ -366,7 +361,6 @@ public class Biblioteca {
             System.out.println("Aluno cadastrado com sucesso no banco de dados!");
         } catch (SQLException e) {
             System.err.println("Erro ao cadastro aluno no banco de dados: " + e.getMessage());
-            // Adicione verificação de duplicidade de matrícula (chave primária)
             if (e.getSQLState() != null && e.getSQLState().startsWith("23")) {
                 System.err.println("Erro: Matrícula já existe no banco de dados. Por favor, forneça uma matrícula única.");
             }
@@ -500,7 +494,6 @@ public class Biblioteca {
         }
     }
 
-    // DEFININDO MÉTODOS PARA LEITURA (sem alterações)
     public static String lerString(Scanner scanner, String prompt) {
         System.out.println(prompt);
         return scanner.nextLine();
@@ -532,7 +525,6 @@ public class Biblioteca {
         }
     }
 
-    // MAIN
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         boolean continuar = true;
@@ -543,7 +535,7 @@ public class Biblioteca {
             System.out.println("3- Gerenciar Empréstimos");
             System.out.println("4- Sair");
 
-            int opcaoMainMenu = lerInt(scanner, "Escolha uma opção: "); // Usar lerInt
+            int opcaoMainMenu = lerInt(scanner, "Escolha uma opção: ");
             switch (opcaoMainMenu){
                 case 1:
                     System.out.println("\n--- Gerenciar Livros ---");
@@ -591,7 +583,7 @@ public class Biblioteca {
                             }
                             break;
 
-                        case 3: // Buscar Livro (agora por ID)
+                        case 3:
                             System.out.println("\n--- Buscar Livro ---");
                             int idBusca = lerInt(scanner, "Digite o ID do livro a ser buscado: ");
                             Livro livroEncontrado = consultarLivroPorId(idBusca);
@@ -603,14 +595,14 @@ public class Biblioteca {
                             }
                             break;
 
-                        case 4: // Atualizar Quantidade
+                        case 4:
                             System.out.println("\n--- Atualizar Quantidade de Livro ---");
                             String ibsnAtualizar = lerString(scanner, "Digite o IBSN do livro para atualizar a quantidade: ");
                             int change = lerInt(scanner, "Digite a mudança na quantidade (ex: 5 para adicionar, -2 para remover): ");
                             updateLivroQuantidade(ibsnAtualizar, change);
                             break;
 
-                        case 5: // Excluir Livro
+                        case 5:
                             System.out.println("\n--- Excluir Livro ---");
                             String ibsnExcluir = lerString(scanner, "Digite o IBSN do livro a ser excluído: ");
                             excluirLivro(ibsnExcluir);
@@ -620,9 +612,9 @@ public class Biblioteca {
                             System.out.println("Opção inválida para Gerenciar Livros.");
                             break;
                     }
-                    break; // Importante para sair do switch do menu principal
+                    break;
 
-                case 2: // Gerenciar Usuários (exemplo de como continuar)
+                case 2:
                     System.out.println("\n--- Gerenciar Usuários ---");
                     System.out.println("1- Adicionar Aluno");
                     System.out.println("2- Listar Alunos");
@@ -638,13 +630,13 @@ public class Biblioteca {
                             do {
                                 matriculaAluno = lerLong(scanner, "Digite a matrícula do aluno (ou 0 para gerar aleatória): ");
                                 if (matriculaAluno == 0) {
-                                    // Gere uma matrícula aleatória com um limite razoável de dígitos
-                                    matriculaAluno = gerarIdAleatorioComLimite(10); // Ex: 10 dígitos para matrícula
+
+                                    matriculaAluno = gerarIdAleatorioComLimite(10);
                                     System.out.println("Matrícula gerada: " + matriculaAluno);
                                 }
                                 if (consultarAlunoPorMatricula(matriculaAluno) != null) {
                                     System.out.println("Esta matrícula já existe. Por favor, digite outra ou 0 para gerar uma nova.");
-                                    matriculaAluno = 0L; // Para manter o loop
+                                    matriculaAluno = 0L;
                                 }
                             } while (matriculaAluno == 0);
 
@@ -686,7 +678,7 @@ public class Biblioteca {
                     }
                     break;
 
-                case 3: // Gerenciar Empréstimos
+                case 3:
                     System.out.println("\n--- Gerenciar Empréstimos ---");
                     System.out.println("1- Registrar Empréstimo");
                     System.out.println("2- Listar Empréstimos");
@@ -697,7 +689,6 @@ public class Biblioteca {
                     switch (opcaoGerenciarEmprestimos) {
                         case 1:
                             Long matriculaEmprestimo = lerLong(scanner, "Digite a matrícula do aluno: ");
-                            // Verificar se o aluno existe
                             Aluno alunoEmprestimo = consultarAlunoPorMatricula(matriculaEmprestimo);
                             if (alunoEmprestimo == null) {
                                 System.out.println("Aluno com matrícula " + matriculaEmprestimo + " não encontrado.");
@@ -705,7 +696,6 @@ public class Biblioteca {
                             }
 
                             int idLivroEmprestimo = lerInt(scanner, "Digite o ID do livro: ");
-                            // Verificar se o livro existe e está disponível
                             Livro livroEmprestimo = consultarLivroPorId(idLivroEmprestimo);
                             if (livroEmprestimo == null) {
                                 System.out.println("Livro com ID " + idLivroEmprestimo + " não encontrado.");
@@ -718,7 +708,7 @@ public class Biblioteca {
 
 
                             LocalDate dataEmprestimo = LocalDate.now();
-                            LocalDate dataDevolucaoPrevista = dataEmprestimo.plusDays(7); // Empréstimo por 7 dias
+                            LocalDate dataDevolucaoPrevista = dataEmprestimo.plusDays(7);
 
                             Emprestimo novoEmprestimo = new Emprestimo(matriculaEmprestimo, idLivroEmprestimo, dataEmprestimo, dataDevolucaoPrevista);
                             registrarEmprestimo(novoEmprestimo);
