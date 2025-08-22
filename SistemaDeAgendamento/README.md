@@ -40,7 +40,7 @@ Este projeto é um **treino prático** desenvolvido em Java, simulando um sistem
 
 ## 🖼️ Screenshots
 
-![Tela de Login](Screenshots/login.png)
+![Tela de Login](Screenshots/Screenshot - Dashboard.png)
 ![Dashboard](Screenshots/dashboard.png)
 ![Tela de Agendamento](Screenshots/agendamento.png)
 
