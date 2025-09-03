@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 
 public class SistemaAgendamento {
-    static class Cliente {
+    public static class Cliente {
         Long IdCliente;
         String NomeCliente;
         String TelefoneCliente;
@@ -52,7 +52,7 @@ public class SistemaAgendamento {
         }
     }
 
-    static class Funcionario {
+    public static class Funcionario {
         Long IdFuncionario;
         String NomeFuncionario;
         String especialidade;
@@ -147,7 +147,7 @@ public class SistemaAgendamento {
         }
     }
 
-    static class Servico {
+    public static class Servico {
         Long IdServico;
         String NomeServico;
         int duracao;
@@ -210,7 +210,7 @@ public class SistemaAgendamento {
         }
     }
 
-    static class Conexao {
+    public static class Conexao {
         private static final String URL = "jdbc:mysql://localhost:3306/agendamento?" +
                 "useSSL=true&" +
                 "requireSSL=true&" +
@@ -258,7 +258,7 @@ public class SistemaAgendamento {
         }
     }
 
-    static class DBUtils {
+    public static class DBUtils {
         public static boolean executarUpdate(String sql, Object... params) {
             Connection conn = null;
             PreparedStatement stmt = null;
@@ -440,8 +440,9 @@ public class SistemaAgendamento {
         }
         return null;
     }
+
     public static boolean agendamento(Agendamento agendamento) {
-        String sql = "INSERT INTO agendamentos (id_agendamento, id_cliente, telefone_cliente, id_funcionario, data_servico, data_agendamento, horario_reservado, id_servico_agendado, valor_servico) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO agendamento (IdAgendamento, IdCliente, TelefoneCliente, IdFuncionario, DataServico, DataAgendamento, HorarioReservado, IdServicoAgendado, ValorServico) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = SistemaAgendamentoUI.ConexaoUI.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -500,22 +501,20 @@ public class SistemaAgendamento {
         }
     }
 
-    public static boolean excluirFuncionario(Long IdFuncionario) {
+    public static boolean excluirFuncionario(long IdFuncionario) {
         String sql = "DELETE FROM Funcionario WHERE IdFuncionario = ?";
 
         try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            stmt.setLong(1, IdFuncionario);
-            int rowsAffected = stmt.executeUpdate();
+            pstmt.setLong(1, IdFuncionario);
+            int affectedRows = pstmt.executeUpdate();
             Conexao.commit(conn);
 
-            return rowsAffected > 0;
+            return affectedRows > 0;
+
         } catch (SQLException e) {
             System.err.println("❌- Erro ao excluir funcionário: " + e.getMessage());
-            if (e.getSQLState() != null && e.getSQLState().startsWith("23")) {
-                System.err.println("⚠️- Funcionário vinculado a agendamentos, exclusão não permitida.");
-            }
             return false;
         }
     }
@@ -639,28 +638,27 @@ public class SistemaAgendamento {
     }
 
 
-    static class Agendamento {
+    public static class Agendamento {
         Long IdAgendamento;
         Long IdCliente;
         String TelefoneCliente;
         Long IdFuncionario;
         String DataServico;
-        Date DataAgendamento;
+        java.sql.Date DataAgendamento;
         String HorarioReservado;
         Long IdServicoAgendado;
         Double ValorServico;
 
-
-        public Agendamento(Long idAgendamento, Long idCliente, String telefoneCliente, Long idFuncionario, String dataServico, Date dataAgendamento, String horarioReservado, Long IdservicoAgendado, Double valorServico) {
-            this.IdAgendamento = idAgendamento;
-            this.IdCliente = idCliente;
-            this.TelefoneCliente = telefoneCliente;
-            this.IdFuncionario = idFuncionario;
-            this.DataServico = dataServico;
-            this.DataAgendamento = dataAgendamento;
-            this.HorarioReservado = horarioReservado;
-            this.IdServicoAgendado = IdservicoAgendado;
-            this.ValorServico = valorServico;
+        public Agendamento(Long idAgendamento, Long idCliente, String telefoneCliente, Long idFuncionario, String dataServico, Date dataAgendamento, String horarioReservado, Long idServicoAgendado, Double valorServico) {
+            IdAgendamento = idAgendamento;
+            IdCliente = idCliente;
+            TelefoneCliente = telefoneCliente;
+            IdFuncionario = idFuncionario;
+            DataServico = dataServico;
+            DataAgendamento = dataAgendamento;
+            HorarioReservado = horarioReservado;
+            IdServicoAgendado = idServicoAgendado;
+            ValorServico = valorServico;
         }
 
         public Long getIdAgendamento() {
@@ -723,8 +721,8 @@ public class SistemaAgendamento {
             return IdServicoAgendado;
         }
 
-        public void setIdServicoAgendado(Long IdservicoAgendado) {
-            IdServicoAgendado = IdservicoAgendado;
+        public void setIdServicoAgendado(Long idServicoAgendado) {
+            IdServicoAgendado = idServicoAgendado;
         }
 
         public Double getValorServico() {
@@ -984,29 +982,17 @@ public class SistemaAgendamento {
         }
     }
 
-    public static boolean excluirServico(Long IdServico) {
-        String checkSql = "SELECT COUNT(*) FROM Agendamento WHERE IdServicoAgendado = ?";
-        String deleteSql = "DELETE FROM Servico WHERE IdServico = ?";
+    public static boolean excluirServico(long IdServico) {
+        String sql = "DELETE FROM Servico WHERE IdServico = ?";
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-        try (Connection conn = Conexao.conectar()) {
-            // Primeiro verifica se existe vínculo
-            try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
-                checkStmt.setLong(1, IdServico);
-                ResultSet rs = checkStmt.executeQuery();
-                if (rs.next() && rs.getInt(1) > 0) {
-                    System.err.println("⚠️- Serviço vinculado a agendamentos, exclusão não permitida.");
-                    return false;
-                }
-            }
+            pstmt.setLong(1, IdServico);
+            int affectedRows = pstmt.executeUpdate();
+            Conexao.commit(conn);
 
+            return affectedRows > 0;
 
-            try (PreparedStatement deleteStmt = conn.prepareStatement(deleteSql)) {
-                deleteStmt.setLong(1, IdServico);
-                int rowsAffected = deleteStmt.executeUpdate();
-                Conexao.commit(conn);
-
-                return rowsAffected > 0;
-            }
         } catch (SQLException e) {
             System.err.println("❌- Erro ao excluir serviço: " + e.getMessage());
             return false;
@@ -1045,7 +1031,7 @@ public class SistemaAgendamento {
                 case 1:
                     System.out.println("\n--- Agendar Serviço ---");
 
-                    Long IdAgendamento = gerarIdAleatorioComLimite(5);
+                    Long IdAgendamento = gerarIdAleatorioComLimite(4);
                     Long IdCliente = lerLong(scanner, "Digite o ID do cliente: ");
                     String TelefoneCliente = lerString(scanner, "Digite o telefone do cliente: ");
                     Long IdFuncionario = lerLong(scanner, "Digite o ID do funcionário que prestará o serviço: ");
@@ -1385,8 +1371,8 @@ public class SistemaAgendamento {
 
                     ArrayList<Agendamento> agendamentosFuncionario = consultarAgendamentosPorFuncionario(idFuncionarioConsultar);
                     if (agendamentosFuncionario != null && !agendamentosFuncionario.isEmpty()) {
-                        System.out.println("\n📅 Agendamentos do funcionário ID " + idFuncionarioConsultar+ ":");
-                        for(Agendamento agendamento:agendamentosFuncionario){
+                        System.out.println("\n📅 Agendamentos do funcionário ID " + idFuncionarioConsultar + ":");
+                        for (Agendamento agendamento : agendamentosFuncionario) {
                             System.out.println(agendamento);
                         }
                     } else {
@@ -1417,5 +1403,6 @@ public class SistemaAgendamento {
         } while (option != 0);
 
         scanner.close();
+
     }
 }

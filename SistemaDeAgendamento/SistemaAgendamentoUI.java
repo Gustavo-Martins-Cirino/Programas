@@ -23,28 +23,6 @@ public class SistemaAgendamentoUI extends Application {
 
     //MODELOS DA UI
 
-    public static class Cliente {
-        private Long IdCliente;
-        private String nomeCliente;
-        private String telefoneCliente;
-
-        // CONSTRUTOR
-        public Cliente(Long IdCliente, String nomeCliente, String telefoneCliente) {
-            this.IdCliente = IdCliente;
-            this.nomeCliente = nomeCliente;
-            this.telefoneCliente = telefoneCliente;
-        }
-
-        // Getters e Setters
-        public Long getIdCliente() { return IdCliente; }
-        public void setIdCliente(Long IdCliente) { this.IdCliente = IdCliente; }
-        public String getNomeCliente() { return nomeCliente; }
-        public void setNomeCliente(String nomeCliente) { this.nomeCliente = nomeCliente; }
-        public String getTelefoneCliente() { return telefoneCliente; }
-        public void setTelefoneCliente(String telefoneCliente) { this.telefoneCliente = telefoneCliente; }
-        @Override
-        public String toString() { return nomeCliente; }
-    }
 
     public static class Funcionario {
         private Long idFuncionario;
@@ -69,24 +47,74 @@ public class SistemaAgendamentoUI extends Application {
         }
 
         // Getters e Setters
-        public Long getIdFuncionario() { return idFuncionario; }
-        public void setIdFuncionario(Long idFuncionario) { this.idFuncionario = idFuncionario; }
-        public String getNomeFuncionario() { return nomeFuncionario; }
-        public void setNomeFuncionario(String nomeFuncionario) { this.nomeFuncionario = nomeFuncionario; }
-        public String getEspecialidade() { return especialidade; }
-        public void setEspecialidade(String especialidade) { this.especialidade = especialidade; }
-        public String getTelefoneFuncionario() { return telefoneFuncionario; }
-        public void setTelefoneFuncionario(String telefoneFuncionario) { this.telefoneFuncionario = telefoneFuncionario; }
-        public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
-        public LocalTime getHorarioTrabalhoInicio() { return horarioTrabalhoInicio; }
-        public void setHorarioTrabalhoInicio(LocalTime horarioTrabalhoInicio) { this.horarioTrabalhoInicio = horarioTrabalhoInicio; }
-        public LocalTime getHorarioTrabalhoFim() { return horarioTrabalhoFim; }
-        public void setHorarioTrabalhoFim(LocalTime horarioTrabalhoFim) { this.horarioTrabalhoFim = horarioTrabalhoFim; }
-        public String getDiasDeTrabalho() { return diasDeTrabalho; }
-        public void setDiasDeTrabalho(String diasDeTrabalho) { this.diasDeTrabalho = diasDeTrabalho; }
+        public Long getIdFuncionario() {
+            return idFuncionario;
+        }
+
+        public void setIdFuncionario(Long idFuncionario) {
+            this.idFuncionario = idFuncionario;
+        }
+
+        public String getNomeFuncionario() {
+            return nomeFuncionario;
+        }
+
+        public void setNomeFuncionario(String nomeFuncionario) {
+            this.nomeFuncionario = nomeFuncionario;
+        }
+
+        public String getEspecialidade() {
+            return especialidade;
+        }
+
+        public void setEspecialidade(String especialidade) {
+            this.especialidade = especialidade;
+        }
+
+        public String getTelefoneFuncionario() {
+            return telefoneFuncionario;
+        }
+
+        public void setTelefoneFuncionario(String telefoneFuncionario) {
+            this.telefoneFuncionario = telefoneFuncionario;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public LocalTime getHorarioTrabalhoInicio() {
+            return horarioTrabalhoInicio;
+        }
+
+        public void setHorarioTrabalhoInicio(LocalTime horarioTrabalhoInicio) {
+            this.horarioTrabalhoInicio = horarioTrabalhoInicio;
+        }
+
+        public LocalTime getHorarioTrabalhoFim() {
+            return horarioTrabalhoFim;
+        }
+
+        public void setHorarioTrabalhoFim(LocalTime horarioTrabalhoFim) {
+            this.horarioTrabalhoFim = horarioTrabalhoFim;
+        }
+
+        public String getDiasDeTrabalho() {
+            return diasDeTrabalho;
+        }
+
+        public void setDiasDeTrabalho(String diasDeTrabalho) {
+            this.diasDeTrabalho = diasDeTrabalho;
+        }
+
         @Override
-        public String toString() { return nomeFuncionario; } // Para aparecer o nome no ComboBox
+        public String toString() {
+            return nomeFuncionario;
+        } // Para aparecer o nome no ComboBox
     }
 
     public static class Servico {
@@ -104,62 +132,45 @@ public class SistemaAgendamentoUI extends Application {
         }
 
         // Getters e Setters
-        public Long getIdServico() { return idServico; }
-        public void setIdServico(Long idServico) { this.idServico = idServico; }
-        public String getNomeServico() { return nomeServico; }
-        public void setNomeServico(String nomeServico) { this.nomeServico = nomeServico; }
-        public int getDuracao() { return duracao; }
-        public void setDuracao(int duracao) { this.duracao = duracao; }
-        public double getValorServico() { return valorServico; }
-        public void setValorServico(double valorServico) { this.valorServico = valorServico; }
-        @Override
-        public String toString() { return nomeServico; }
-    }
+        public Long getIdServico() {
+            return idServico;
+        }
 
-    public static class Agendamento {
-        private Long idAgendamento;
-        private Long IdCliente;
-        private String telefoneCliente;
-        private Long idFuncionario;
-        private String dataServico;
-        private LocalDate dataAgendamento;
-        private String horarioReservado;
-        private Long idServicoAgendado;
-        private double valorServico;
+        public void setIdServico(Long idServico) {
+            this.idServico = idServico;
+        }
 
-        // CONSTRUTOR
-        public Agendamento(Long idAgendamento, Long IdCliente, String telefoneCliente, Long idFuncionario, String dataServico, LocalDate dataAgendamento, String horarioReservado, Long idServicoAgendado, double valorServico) {
-            this.idAgendamento = idAgendamento;
-            this.IdCliente = IdCliente;
-            this.telefoneCliente = telefoneCliente;
-            this.idFuncionario = idFuncionario;
-            this.dataServico = dataServico;
-            this.dataAgendamento = dataAgendamento;
-            this.horarioReservado = horarioReservado;
-            this.idServicoAgendado = idServicoAgendado;
+        public String getNomeServico() {
+            return nomeServico;
+        }
+
+        public void setNomeServico(String nomeServico) {
+            this.nomeServico = nomeServico;
+        }
+
+        public int getDuracao() {
+            return duracao;
+        }
+
+        public void setDuracao(int duracao) {
+            this.duracao = duracao;
+        }
+
+        public double getValorServico() {
+            return valorServico;
+        }
+
+        public void setValorServico(double valorServico) {
             this.valorServico = valorServico;
         }
 
-        // Getters e Setters
-        public Long getIdAgendamento() { return idAgendamento; }
-        public void setIdAgendamento(Long idAgendamento) { this.idAgendamento = idAgendamento; }
-        public Long getIdCliente() { return IdCliente; }
-        public void setIdCliente(Long IdCliente) { this.IdCliente = IdCliente; }
-        public String getTelefoneCliente() { return telefoneCliente; }
-        public void setTelefoneCliente(String telefoneCliente) { this.telefoneCliente = telefoneCliente; }
-        public Long getIdFuncionario() { return idFuncionario; }
-        public void setIdFuncionario(Long idFuncionario) { this.idFuncionario = idFuncionario; }
-        public String getDataServico() { return dataServico; }
-        public void setDataServico(String dataServico) { this.dataServico = dataServico; }
-        public LocalDate getDataAgendamento() { return dataAgendamento; }
-        public void setDataAgendamento(LocalDate dataAgendamento) { this.dataAgendamento = dataAgendamento; }
-        public String getHorarioReservado() { return horarioReservado; }
-        public void setHorarioReservado(String horarioReservado) { this.horarioReservado = horarioReservado; }
-        public Long getIdServicoAgendado() { return idServicoAgendado; }
-        public void setIdServicoAgendado(Long idServicoAgendado) { this.idServicoAgendado = idServicoAgendado; }
-        public double getValorServico() { return valorServico; }
-        public void setValorServico(double valorServico) { this.valorServico = valorServico; }
+        @Override
+        public String toString() {
+            return nomeServico;
+        }
     }
+
+
     //CONEXÃO COM BANCO
     static class ConexaoUI {
         private static final String URL = "jdbc:mysql://localhost:3306/agendamento?" +
@@ -210,26 +221,25 @@ public class SistemaAgendamentoUI extends Application {
     }
 
 
-
     // ===== LISTAS E TABELAS DA UI =====
-    private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
+    private ObservableList<SistemaAgendamento.Cliente> clientes = FXCollections.observableArrayList();
     private ObservableList<Funcionario> funcionarios = FXCollections.observableArrayList();
     private ObservableList<Servico> servicos = FXCollections.observableArrayList();
-    private ObservableList<Agendamento> agendamentos = FXCollections.observableArrayList();
-    private TableView<Cliente> tabelaClientes;
+    private ObservableList<SistemaAgendamento.Agendamento> agendamento = FXCollections.observableArrayList();
+    private TableView<SistemaAgendamento.Cliente> tabelaClientes;
     private TableView<Funcionario> tabelaFuncionarios;
     private TableView<Servico> tabelaServicos;
-    private TableView<Agendamento> tabelaAgendamentos;
+    private TableView<SistemaAgendamento.Agendamento> tabelaAgendamentos;
 
     private void carregarDadosDoBanco() {
         clientes.clear();
         funcionarios.clear();
         servicos.clear();
-        agendamentos.clear();
+        agendamento.clear();
 
         // Carregar dados do BD
         clientes.addAll(SistemaAgendamento.consultarTodosClientes().stream()
-                .map(c -> new Cliente(c.getIdCliente(), c.getNomeCliente(), c.getTelefoneCliente()))
+                .map(c -> new SistemaAgendamento.Cliente(c.getIdCliente(), c.getNomeCliente(), c.getTelefoneCliente()))
                 .toList());
 
         funcionarios.addAll(SistemaAgendamento.consultarTodosFuncionarios().stream()
@@ -242,10 +252,10 @@ public class SistemaAgendamentoUI extends Application {
                 .map(s -> new Servico(s.getIdServico(), s.getNomeServico(), s.getDuracao(), s.getValorServico()))
                 .toList());
 
-        agendamentos.addAll(SistemaAgendamento.consultarTodosAgendamentos().stream()
-                .map(a -> new Agendamento(a.getIdAgendamento(), a.getIdCliente(), a.getTelefoneCliente(),
+        agendamento.addAll(SistemaAgendamento.consultarTodosAgendamentos().stream()
+                .map(a -> new SistemaAgendamento.Agendamento(a.getIdAgendamento(), a.getIdCliente(), a.getTelefoneCliente(),
                         a.getIdFuncionario(), a.getDataServico(),
-                        a.getDataAgendamento().toLocalDate(),
+                        a.getDataAgendamento(),
                         a.getHorarioReservado(), a.getIdServicoAgendado(), a.getValorServico()))
                 .toList());
 
@@ -253,14 +263,20 @@ public class SistemaAgendamentoUI extends Application {
         if (tabelaClientes != null) tabelaClientes.setItems(clientes);
         if (tabelaFuncionarios != null) tabelaFuncionarios.setItems(funcionarios);
         if (tabelaServicos != null) tabelaServicos.setItems(servicos);
-        if (tabelaAgendamentos != null) tabelaAgendamentos.setItems(agendamentos);
+        if (tabelaAgendamentos != null) tabelaAgendamentos.setItems(agendamento);
     }
 
 
     //MAIN
-    public static void main(String[] args) { launch(args); }
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-    @Override public void start(Stage primaryStage) { mostrarTelaLogin(primaryStage); }
+    @Override
+    public void start(Stage primaryStage) {
+        mostrarTelaLogin(primaryStage);
+    }
+
     private boolean confirmarAcao(String titulo, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(titulo);
@@ -338,6 +354,7 @@ public class SistemaAgendamentoUI extends Application {
         Scene scene = new Scene(mainLayout, 500, 400);
         stage.setScene(scene);
         stage.show();
+
     }
 
     private boolean autenticar(String usuario, String senha) {
@@ -418,25 +435,24 @@ public class SistemaAgendamentoUI extends Application {
     }
 
 
-
     private void atualizarDashboard(Label lblTotalAgendamentos, Label lblTotalClientes, Label lblFaturamento) {
-        lblTotalAgendamentos.setText(String.valueOf(agendamentos.size()));
+        lblTotalAgendamentos.setText(String.valueOf(agendamento.size()));
         lblTotalClientes.setText(String.valueOf(clientes.size()));
 
-        double faturamentoTotal = agendamentos.stream()
-                .mapToDouble(Agendamento::getValorServico)
+        double faturamentoTotal = agendamento.stream()
+                .mapToDouble(SistemaAgendamento.Agendamento::getValorServico)
                 .sum();
         lblFaturamento.setText(String.format("R$ %.2f", faturamentoTotal));
     }
+
     //TELA PRINCIPAL
     private void mostrarTelaPrincipal() {
         Stage stage = new Stage();
-        stage.setTitle("💈 BeautyTech - Sistema de Agendamento");
+        stage.setTitle("\uD83D\uDCBB GustaTech - Sistema de Agendamento");
 
         TabPane tabPane = new TabPane();
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         tabPane.setStyle("-fx-background-color: #f8f9fa;");
-
 
 
         carregarDadosDoBanco();
@@ -550,13 +566,13 @@ public class SistemaAgendamentoUI extends Application {
         tabelaClientes = new TableView<>(clientes);
         tabelaClientes.setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
 
-        TableColumn<Cliente, Long> colId = new TableColumn<>("ID");
+        TableColumn<SistemaAgendamento.Cliente, Long> colId = new TableColumn<>("ID");
         colId.setCellValueFactory(new PropertyValueFactory<>("IdCliente"));
 
-        TableColumn<Cliente, String> colNome = new TableColumn<>("Nome");
+        TableColumn<SistemaAgendamento.Cliente, String> colNome = new TableColumn<>("Nome");
         colNome.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
 
-        TableColumn<Cliente, String> colTelefone = new TableColumn<>("Telefone");
+        TableColumn<SistemaAgendamento.Cliente, String> colTelefone = new TableColumn<>("Telefone");
         colTelefone.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
 
         tabelaClientes.getColumns().addAll(colId, colNome, colTelefone);
@@ -573,11 +589,11 @@ public class SistemaAgendamentoUI extends Application {
 
         btnNovo.setOnAction(e -> mostrarFormularioCliente(null));
         btnEditar.setOnAction(e -> {
-            Cliente selecionado = tabelaClientes.getSelectionModel().getSelectedItem();
+            SistemaAgendamento.Cliente selecionado = tabelaClientes.getSelectionModel().getSelectedItem();
             if (selecionado != null) mostrarFormularioCliente(selecionado);
         });
         btnExcluir.setOnAction(e -> {
-            Cliente selecionado = tabelaClientes.getSelectionModel().getSelectedItem();
+            SistemaAgendamento.Cliente selecionado = tabelaClientes.getSelectionModel().getSelectedItem();
 
             if (selecionado == null) {
                 mostrarAlerta("Nenhum cliente selecionado", "Por favor, selecione um cliente na tabela para excluir.");
@@ -588,7 +604,7 @@ public class SistemaAgendamentoUI extends Application {
             if (confirmarAcao("Excluir Cliente", "Tem certeza que deseja excluir o cliente " + selecionado.getNomeCliente() + "?")) {
 
 
-                boolean usadoEmAgendamento = agendamentos.stream()
+                boolean usadoEmAgendamento = agendamento.stream()
                         .anyMatch(agendamento -> agendamento.getIdCliente().equals(selecionado.getIdCliente()));
 
                 if (usadoEmAgendamento) {
@@ -615,13 +631,14 @@ public class SistemaAgendamentoUI extends Application {
 
         return vbox;
     }
-    private void mostrarFormularioCliente(Cliente cliente) {
+
+    private void mostrarFormularioCliente(SistemaAgendamento.Cliente cliente) {
         Stage stage = new Stage();
         stage.setTitle(cliente == null ? "Novo Cliente" : "Editar Cliente");
 
         VBox vbox = new VBox(15);
         vbox.setPadding(new Insets(20));
-        vbox.setStyle("-fx-background-color: #ecf0f1; -fx-background-radius: 10;");
+        vbox.setStyle("-fx-background-color: rgba(170,170,170,0.15); -fx-background-radius: 10;");
 
         TextField txtNome = new TextField(cliente != null ? cliente.getNomeCliente() : "");
         TextField txtTelefone = new TextField(cliente != null ? cliente.getTelefoneCliente() : "");
@@ -733,16 +750,32 @@ public class SistemaAgendamentoUI extends Application {
         });
         btnExcluir.setOnAction(e -> {
             Funcionario selecionado = tabelaFuncionarios.getSelectionModel().getSelectedItem();
-            if (selecionado != null) {
-                if (confirmarAcao("Excluir Funcionário", "Tem certeza que deseja excluir este funcionário?")) {
-                    // bloqueia exclusão se houver agendamentos
-                    boolean usado = agendamentos.stream().anyMatch(a -> a.getIdFuncionario().equals(selecionado.getIdFuncionario()));
-                    if (usado) {
-                        mostrarAlerta("Não permitido", "Há agendamentos para este funcionário.");
-                        return;
-                    }
+
+            if (selecionado == null) {
+                mostrarAlerta("Nenhum funcionário selecionado", "Por favor, selecione um funcionário na tabela para excluir.");
+                return;
+            }
+
+
+            if (confirmarAcao("Excluir Funcionário", "Tem certeza que deseja excluir o funcionário " + selecionado.getNomeFuncionario() + "?")) {
+
+                boolean usadoEmAgendamento = agendamento.stream()
+                        .anyMatch(agendamento -> agendamento.getIdFuncionario().equals(selecionado.getIdFuncionario()));
+
+                if (usadoEmAgendamento) {
+                    mostrarAlerta("Operação não permitida", "Este funcionário não pode ser excluído pois possui agendamentos associados a ele.");
+                    return;
+                }
+
+
+                if (SistemaAgendamento.excluirFuncionario(selecionado.getIdFuncionario())) {
+
+
                     funcionarios.remove(selecionado);
                     tabelaFuncionarios.refresh();
+
+                } else {
+                    mostrarAlerta("Erro de Banco de Dados", "Não foi possível excluir o funcionário.");
                 }
             }
         });
@@ -756,16 +789,21 @@ public class SistemaAgendamentoUI extends Application {
 
     private void mostrarFormularioFuncionario(Funcionario f, TableView<Funcionario> tabela) {
         Stage stage = new Stage();
-        VBox v = new VBox(10); v.setPadding(new Insets(15));
+        VBox v = new VBox(10);
+        v.setPadding(new Insets(15));
 
-        TextField txtId = new TextField(); txtId.setDisable(true);
+        TextField txtId = new TextField();
+        txtId.setDisable(true);
         TextField txtNome = new TextField();
         TextField txtEsp = new TextField();
         TextField txtTel = new TextField();
         TextField txtEmail = new TextField();
-        TextField txtInicio = new TextField(); txtInicio.setPromptText("HH:mm");
-        TextField txtFim = new TextField(); txtFim.setPromptText("HH:mm");
-        TextField txtDias = new TextField(); txtDias.setPromptText("SEG,TER,QUA,QUI,SEX");
+        TextField txtInicio = new TextField();
+        txtInicio.setPromptText("HH:mm");
+        TextField txtFim = new TextField();
+        txtFim.setPromptText("HH:mm");
+        TextField txtDias = new TextField();
+        txtDias.setPromptText("SEG,TER,QUA,QUI,SEX");
 
         DateTimeFormatter hm = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -780,7 +818,9 @@ public class SistemaAgendamentoUI extends Application {
             txtDias.setText(f.getDiasDeTrabalho());
         } else {
             txtId.setText(gerarNovoId(funcionarios.stream().map(Funcionario::getIdFuncionario).toArray(Long[]::new)).toString());
-            txtInicio.setText("09:00"); txtFim.setText("18:00"); txtDias.setText("SEG,TER,QUA,QUI,SEX");
+            txtInicio.setText("09:00");
+            txtFim.setText("18:00");
+            txtDias.setText("SEG,TER,QUA,QUI,SEX");
         }
 
         Button btnSalvar = new Button("Salvar");
@@ -826,13 +866,16 @@ public class SistemaAgendamentoUI extends Application {
             }
         });
 
-        Button btnCancelar = new Button("Cancelar"); btnCancelar.setOnAction(e -> stage.close());
+        Button btnCancelar = new Button("Cancelar");
+        btnCancelar.setOnAction(e -> stage.close());
 
         v.getChildren().addAll(new Label("ID:"), txtId, new Label("Nome:"), txtNome, new Label("Especialidade:"), txtEsp,
                 new Label("Telefone:"), txtTel, new Label("Email:"), txtEmail, new Label("Início (HH:mm):"), txtInicio,
                 new Label("Fim (HH:mm):"), txtFim, new Label("Dias de Trabalho:"), txtDias, new HBox(10, btnSalvar, btnCancelar));
 
-        stage.setScene(new Scene(v, 360, 520)); stage.setTitle(f==null?"Novo Funcionário":"Editar Funcionário"); stage.show();
+        stage.setScene(new Scene(v, 360, 520));
+        stage.setTitle(f == null ? "Novo Funcionário" : "Editar Funcionário");
+        stage.show();
     }
 
     // ===== SERVIÇOS =====
@@ -877,12 +920,35 @@ public class SistemaAgendamentoUI extends Application {
             Servico selecionado = tabelaServicos.getSelectionModel().getSelectedItem();
             if (selecionado != null) mostrarFormularioServico(selecionado);
         });
+
         btnExcluir.setOnAction(e -> {
             Servico selecionado = tabelaServicos.getSelectionModel().getSelectedItem();
-            if (selecionado != null) {
-                if (confirmarAcao("Excluir Serviço", "Tem certeza que deseja excluir este serviço?")) {
+
+            if (selecionado == null) {
+                mostrarAlerta("Nenhum serviço selecionado", "Por favor, selecione um serviço na tabela para excluir.");
+                return;
+            }
+
+
+            if (confirmarAcao("Excluir Serviço", "Tem certeza que deseja excluir o serviço " + selecionado.getNomeServico() + "?")) {
+
+                boolean usadoEmAgendamento = agendamento.stream()
+                        .anyMatch(agendamento -> agendamento.getIdServicoAgendado().equals(selecionado.getIdServico()));
+
+                if (usadoEmAgendamento) {
+                    mostrarAlerta("Operação não permitida", "Este serviço não pode ser excluído pois possui agendamentos associados a ele.");
+                    return;
+                }
+
+
+                if (SistemaAgendamento.excluirServico(selecionado.getIdServico())) {
+
+
                     servicos.remove(selecionado);
                     tabelaServicos.refresh();
+
+                } else {
+                    mostrarAlerta("Erro de Banco de Dados", "Não foi possível excluir o serviço.");
                 }
             }
         });
@@ -904,44 +970,44 @@ public class SistemaAgendamentoUI extends Application {
         Label titulo = new Label("📅 Gerenciamento de Agendamentos");
         titulo.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;");
 
-        tabelaAgendamentos = new TableView<>(agendamentos);
+        tabelaAgendamentos = new TableView<>(agendamento);
 
         tabelaAgendamentos.setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
 
-        TableColumn<Agendamento, Long> colId = new TableColumn<>("ID");
-        colId.setCellValueFactory(new PropertyValueFactory<>("idAgendamento"));
+        TableColumn<SistemaAgendamento.Agendamento, Long> colId = new TableColumn<>("ID");
+        colId.setCellValueFactory(new PropertyValueFactory<>("IdAgendamento"));
 
-        TableColumn<Agendamento, String> colCliente = new TableColumn<>("Cliente");
+        TableColumn<SistemaAgendamento.Agendamento, String> colCliente = new TableColumn<>("Cliente");
         colCliente.setCellValueFactory(cd -> {
             Long id = cd.getValue().getIdCliente();
-            return new SimpleStringProperty(clientes.stream().filter(c -> c.getIdCliente().equals(id)).findFirst().map(Cliente::getNomeCliente).orElse("Desconhecido"));
+            return new SimpleStringProperty(clientes.stream().filter(c -> c.getIdCliente().equals(id)).findFirst().map(SistemaAgendamento.Cliente::getNomeCliente).orElse("Desconhecido"));
         });
 
-        TableColumn<Agendamento, String> colFunc = new TableColumn<>("Funcionário");
+        TableColumn<SistemaAgendamento.Agendamento, String> colFunc = new TableColumn<>("Funcionário");
         colFunc.setCellValueFactory(cd -> {
             Long id = cd.getValue().getIdFuncionario();
             return new SimpleStringProperty(funcionarios.stream().filter(f -> f.getIdFuncionario().equals(id)).findFirst().map(Funcionario::getNomeFuncionario).orElse("?"));
         });
 
-        TableColumn<Agendamento, String> colServico = new TableColumn<>("Serviço");
+        TableColumn<SistemaAgendamento.Agendamento, String> colServico = new TableColumn<>("Serviço");
         colServico.setCellValueFactory(cd -> {
             Long id = cd.getValue().getIdServicoAgendado();
             return new SimpleStringProperty(servicos.stream().filter(s -> s.getIdServico().equals(id)).findFirst().map(Servico::getNomeServico).orElse("?"));
         });
 
-        TableColumn<Agendamento, String> colData = new TableColumn<>("Data");
+        TableColumn<SistemaAgendamento.Agendamento, String> colData = new TableColumn<>("Data");
         colData.setCellValueFactory(new PropertyValueFactory<>("dataServico"));
 
-        TableColumn<Agendamento, String> colHora = new TableColumn<>("Hora");
+        TableColumn<SistemaAgendamento.Agendamento, String> colHora = new TableColumn<>("Hora");
         colHora.setCellValueFactory(new PropertyValueFactory<>("horarioReservado"));
 
-        TableColumn<Agendamento, String> colTel = new TableColumn<>("Telefone");
+        TableColumn<SistemaAgendamento.Agendamento, String> colTel = new TableColumn<>("Telefone");
         colTel.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
 
-        TableColumn<Agendamento, String> colRegistro = new TableColumn<>("Registrado em");
+        TableColumn<SistemaAgendamento.Agendamento, String> colRegistro = new TableColumn<>("Registrado em");
         colRegistro.setCellValueFactory(a -> new SimpleStringProperty(a.getValue().getDataAgendamento().toString()));
 
-        TableColumn<Agendamento, String> colValor = new TableColumn<>("Valor");
+        TableColumn<SistemaAgendamento.Agendamento, String> colValor = new TableColumn<>("Valor");
         colValor.setCellValueFactory(a -> new SimpleStringProperty(String.format("R$ %.2f", a.getValue().getValorServico())));
 
         tabelaAgendamentos.getColumns().addAll(colId, colCliente, colFunc, colServico, colData, colHora, colTel, colRegistro, colValor);
@@ -958,43 +1024,60 @@ public class SistemaAgendamentoUI extends Application {
 
         btnNovo.setOnAction(e -> mostrarFormularioAgendamento(null));
         btnEditar.setOnAction(e -> {
-            Agendamento selecionado = tabelaAgendamentos.getSelectionModel().getSelectedItem();
+            SistemaAgendamento.Agendamento selecionado = tabelaAgendamentos.getSelectionModel().getSelectedItem();
             if (selecionado != null) mostrarFormularioAgendamento(selecionado);
         });
         btnExcluir.setOnAction(e -> {
-            Agendamento selecionado = tabelaAgendamentos.getSelectionModel().getSelectedItem();
-            if (selecionado != null) {
-                if (confirmarAcao("Excluir Agendamento", "Tem certeza que deseja excluir este agendamento?")) {
-                    agendamentos.remove(selecionado);
-                    tabelaAgendamentos.refresh();
-                }
-            }else{
-                System.out.println("Nenhum item selecionado. Por favor, selecione um agendamento na tabela para excluir. ");
+            SistemaAgendamento.Agendamento selecionado = tabelaAgendamentos.getSelectionModel().getSelectedItem();
+            if (selecionado == null) {
+                mostrarAlerta("Nenhum agendamento selecionado", "Por favor, selecione um agendamento na tabela para excluir.");
                 return;
+            }
 
+
+            if (confirmarAcao("Excluir Agendamento", "Tem certeza que deseja excluir o agendamento " + selecionado.getIdAgendamento() + "?")) {
+                if (SistemaAgendamento.excluirAgendamento(selecionado.getIdAgendamento())) {
+                    agendamento.remove(selecionado);
+                    tabelaAgendamentos.refresh();
+
+                } else {
+                    mostrarAlerta("Erro de Banco de Dados", "Não foi possível excluir o agendamento.");
+                }
             }
         });
+
         btnAtualizar.setOnAction(e -> tabelaAgendamentos.refresh());
 
-        botoes.getChildren().addAll(btnNovo, btnEditar, btnExcluir, btnAtualizar);
-        vbox.getChildren().addAll(titulo, tabelaAgendamentos, botoes);
+        botoes.getChildren().
+
+                addAll(btnNovo, btnEditar, btnExcluir, btnAtualizar);
+        vbox.getChildren().
+
+                addAll(titulo, tabelaAgendamentos, botoes);
 
         return vbox;
     }
 
-    private void mostrarFormularioAgendamento(Agendamento a) {
+    private void mostrarFormularioAgendamento(SistemaAgendamento.Agendamento a) {
         Stage stage = new Stage();
-        stage.setTitle("Novo Agendamento");
+        stage.setTitle(agendamento == null ? "Novo Agendamento" : "Editar Agendamento");
 
         VBox v = new VBox(10);
         v.setPadding(new Insets(20));
+        v.setStyle("-fx-background-color: rgba(170,170,170,0.15); -fx-background-radius: 10;");
 
-        ComboBox<Cliente> cbCliente = new ComboBox<>(clientes);
+        ComboBox<SistemaAgendamento.Cliente> cbCliente = new ComboBox<>(clientes);
+        cbCliente.setPromptText("Selecione o Cliente");
+
         ComboBox<Funcionario> cbFuncionario = new ComboBox<>(funcionarios);
+        cbFuncionario.setPromptText("Selecione o Funcionário");
+
         ComboBox<Servico> cbServico = new ComboBox<>(servicos);
+        cbServico.setPromptText("Selecione o Serviço");
 
 
         DatePicker dpData = new DatePicker();
+
         TextField txtValor = new TextField();
         ComboBox<String> cbHora = new ComboBox<>();
         cbHora.setEditable(true);
@@ -1006,17 +1089,26 @@ public class SistemaAgendamentoUI extends Application {
                 cbHora.getItems().add(String.format("%02d:%02d", h, m));
             }
         }
+        TextField txtValorAgendamento = new TextField();
 
-        if (agendamentos != null) {
-            cbHora.setValue(agendamentos.getFirst().getHorarioReservado());
+        if (a != null) {
+            cbCliente.setValue(clientes.stream()
+                    .filter(c -> c.getIdCliente().equals(a.getIdCliente()))
+                    .findFirst().orElse(null));
+            cbFuncionario.setValue(funcionarios.stream()
+                    .filter(f -> f.getIdFuncionario().equals(a.getIdFuncionario()))
+                    .findFirst().orElse(null));
+            cbServico.setValue(servicos.stream()
+                    .filter(s -> s.getIdServico().equals(a.getIdServicoAgendado()))
+                    .findFirst().orElse(null));
+            cbHora.setValue(a.getHorarioReservado());
+            dpData.setValue(a.getDataAgendamento().toLocalDate());
+            txtValor.setText(String.valueOf(a.getValorServico()));
         }
 
 
-        TextField txtValorAgendamento = new TextField(agendamentos != null ? String.valueOf(agendamentos.getFirst().getValorServico()) : "");
-
         txtValor.setEditable(true);
         txtValor.setDisable(false);
-
 
 
         dpData.setEditable(true);
@@ -1035,16 +1127,14 @@ public class SistemaAgendamentoUI extends Application {
         };
 
 
-
-
-
         Button btnSalvar = new Button("Salvar");
         Button btnCancelar = new Button("Cancelar");
         btnCancelar.setOnAction(e -> stage.close());
 
 
         btnSalvar.setOnAction(e -> {
-            Cliente clienteSelecionado = cbCliente.getValue();
+
+            SistemaAgendamento.Cliente clienteSelecionado = cbCliente.getValue();
             Funcionario funcionarioSelecionado = cbFuncionario.getValue();
             Servico servicoSelecionado = cbServico.getValue();
             LocalDate dataSelecionada = dpData.getValue();
@@ -1055,26 +1145,21 @@ public class SistemaAgendamentoUI extends Application {
                 return;
             }
 
-            java.sql.Date dataSQL = java.sql.Date.valueOf(dataSelecionada);
-
             SistemaAgendamento.Agendamento agendamentoDB = new SistemaAgendamento.Agendamento(
                     ThreadLocalRandom.current().nextLong(1000, 1000000),
                     clienteSelecionado.getIdCliente(),
                     clienteSelecionado.getTelefoneCliente(),
                     funcionarioSelecionado.getIdFuncionario(),
                     dataSelecionada.toString(),
-                    dataSQL,
+                    java.sql.Date.valueOf(dataSelecionada),
                     horaSelecionada,
                     servicoSelecionado.getIdServico(),
                     servicoSelecionado.getValorServico()
             );
 
-
-            boolean sucesso = SistemaAgendamento.agendamento(agendamentoDB);
-
-            if (sucesso) {
+            // Agora esta chamada funciona, pois estamos enviando o tipo de objeto que o backend espera.
+            if (SistemaAgendamento.InserirAgendamento(agendamentoDB)) {
                 carregarDadosDoBanco();
-                if (tabelaAgendamentos != null) tabelaAgendamentos.refresh();
                 stage.close();
             } else {
                 mostrarAlerta("Erro de Banco de Dados", "Não foi possível salvar o agendamento.");
@@ -1089,6 +1174,7 @@ public class SistemaAgendamentoUI extends Application {
         stage.setTitle("Novo Agendamento");
         stage.show();
     }
+
     private void preencherHoras(ComboBox<String> cbHora, Funcionario f) {
         cbHora.getItems().clear();
         if (f == null) return;
@@ -1103,14 +1189,21 @@ public class SistemaAgendamentoUI extends Application {
     // ===== UTIL =====
     private void mostrarAlerta(String titulo, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.ERROR, mensagem, ButtonType.OK);
-        alert.setTitle(titulo); alert.setHeaderText(null); alert.showAndWait();
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.showAndWait();
     }
+
     private boolean confirmar(String titulo, String conteudo) {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION, conteudo, ButtonType.OK, ButtonType.CANCEL);
-        a.setTitle(titulo); a.setHeaderText(null);
+        a.setTitle(titulo);
+        a.setHeaderText(null);
         return a.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK;
     }
+
     private Long gerarNovoId(Long[] existentes) {
-        long max = 0; for (Long v : existentes) if (v != null && v > max) max = v; return max + 1;
+        long max = 0;
+        for (Long v : existentes) if (v != null && v > max) max = v;
+        return max + 1;
     }
 }
