@@ -114,7 +114,7 @@ public class SistemaAgendamentoUI extends Application {
         @Override
         public String toString() {
             return nomeFuncionario;
-        } // Para aparecer o nome no ComboBox
+        } 
     }
 
     public static class Servico {
@@ -259,7 +259,7 @@ public class SistemaAgendamentoUI extends Application {
                         a.getHorarioReservado(), a.getIdServicoAgendado(), a.getValorServico()))
                 .toList());
 
-        // Atualiza as tabelas visuais
+       
         if (tabelaClientes != null) tabelaClientes.setItems(clientes);
         if (tabelaFuncionarios != null) tabelaFuncionarios.setItems(funcionarios);
         if (tabelaServicos != null) tabelaServicos.setItems(servicos);
@@ -1157,7 +1157,7 @@ public class SistemaAgendamentoUI extends Application {
                     servicoSelecionado.getValorServico()
             );
 
-            // Agora esta chamada funciona, pois estamos enviando o tipo de objeto que o backend espera.
+           
             if (SistemaAgendamento.InserirAgendamento(agendamentoDB)) {
                 carregarDadosDoBanco();
                 stage.close();
@@ -1206,4 +1206,5 @@ public class SistemaAgendamentoUI extends Application {
         for (Long v : existentes) if (v != null && v > max) max = v;
         return max + 1;
     }
+
 }
