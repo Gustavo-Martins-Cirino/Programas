@@ -776,7 +776,7 @@ public class SistemaAgendamento {
                 return false;
             }
 
-            // Insere agendamento
+            
             String insertSql = "INSERT INTO Agendamento (IdAgendamento, IdCliente, TelefoneCliente, IdFuncionario, " +
                     "DataServico, DataAgendamento, HorarioReservado, IdServicoAgendado, ValorServico) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -873,7 +873,7 @@ public class SistemaAgendamento {
     }
 
 
-    //Definições Serviços
+    
 
     public static boolean InserirServico(Servico servico) {
         String insertSql = "INSERT INTO Servico (IdServico, NomeServico, Duracao, ValorServico) VALUES (?,?,?,?)";
@@ -958,13 +958,13 @@ public class SistemaAgendamento {
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            // Configura os parâmetros
+            
             stmt.setString(1, servico.getNomeServico());
             stmt.setInt(2, servico.getDuracao());
             stmt.setDouble(3, servico.getValorServico());
             stmt.setLong(4, servico.getIdServico());
 
-            // Executa a atualização
+            
             int linhasAfetadas = stmt.executeUpdate();
             Conexao.commit(conn);
 
@@ -1405,4 +1405,5 @@ public class SistemaAgendamento {
         scanner.close();
 
     }
+
 }
