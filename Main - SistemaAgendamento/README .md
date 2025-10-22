@@ -65,7 +65,7 @@ Para executar este projeto em seu ambiente local, siga os passos abaixo.
 ### **1. Backend (Servidor Java)**
 1.  Clone este repositório:
     ```bash
-    git clone https://github.com/Gustavo-Martins-Cirino/Programas/tree/Main-Branch/Main%20-%20SistemaAgendamento
+    git clone [https://github.com/Gustavo-Martins-Cirino/Programas/tree/Main-Branch/Main%20-%20SistemaAgendamento](https://github.com/Gustavo-Martins-Cirino/Programas.git)
     ```
 2.  Abra o projeto na sua IDE.
 3.  Crie um banco de dados no seu MySQL chamado `sistema_agendamento` (ou o nome que preferir).
